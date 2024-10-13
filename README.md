@@ -32,20 +32,20 @@ def isHappy(n):
 > ```
 > docker exec <ossp-container> cat /etc/os-release
 > ```
-> * This command runs cat /etc/os-release inside the running container named ossp-container. The /etc/os-release file contains details about the operating system in the container, such as the OS name, version, and other related metadata. This command is used to inspect which Linux distribution is running inside the container.
+> * This command displays the content of the /etc/os-release file inside the ossp-container. The file contains details about the operating system used in the container. According to the output, the container is running Ubuntu 24.04.1 LTS.
 
 > ```
 > docker exec ossp-containter git --version
 > ```
-> * This command runs git --version inside the ossp-container container to check the installed version of Git. It is useful to verify whether Git is installed in the container and which version is present.
+> * This command runs git --version inside the container to check the installed version of Git. According to the output, Git version 2.43.0 is installed in the container. This confirms that Git is available and shows its version.
 
 > ```
 > docker exec ossp-container python3 --version
 > ```
-> * This command runs python3 --version inside the ossp-container container to check the installed version of Python 3. It ensures that Python 3 is installed and lets you know the exact version.
+> * This command runs python3 --version inside the container to check the installed Python 3 version. The output shows that Python 3 version 3.12.3 is installed in the container, confirming that Python 3 is available and providing the exact version.
 
 > ```
 > docker inspect --format="{{ .HostConfig.Binds }}" ossp-container
 > ```
-> * This command uses docker inspect to retrieve the configuration details of the ossp-container container. The --format="{{ .HostConfig.Binds }}" part formats the output to specifically show the bind mounts, i.e., directories or files from the host system that are mounted into the container. This is helpful to check how the container’s file system is linked to the host system.
+> * This command uses docker inspect to check the bind mount configuration of the container. The output shows "[.ossp_host_dir:/mnt/ossp_container_dir]", which means that the directory .ossp_host_dir from the host system is mounted to /mnt/ossp_container_dir inside the container. This setup allows the host and container to share files between these directories.
 
